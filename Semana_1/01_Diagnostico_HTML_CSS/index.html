@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dulce panadería</title>
+    <meta
+      name="description"
+      content="Panadería hogareña con sabores tradicionales"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <div class="logo-icon">
+            <img src="images/Concha_logo.png" alt="Logo panadería" />
+          </div>
+          <span>Dulce panadería</span>
+        </div>
+        <nav>
+          <a href="#inicio">Inicio</a>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#pedido">Pide ya</a>
+          <a href="#about">Sobre nosotros</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section id="inicio" class="welcome">
+        <div class="welcome-container">
+          <div class="banner">
+            <img
+              src="images/Banner panaderia 2.png"
+              alt="Banner de panadería"
+            />
+          </div>
+          <div class="welcome-title">
+            <h1>Los aromas que te hacen el dia...</h1>
+            <span>se disfrutan a cualquier hora.</span>
+          </div>
+        </div>
+      </section>
+      <section id="catalogo">
+        <h2>En nuestro catálogo:</h2>
+        <div class="product">
+          <div class="product-container">
+            <img src="images/Concha vainilla.png" alt="Pan concha" />
+            <h3>Concha de vainilla</h3>
+            <p class="description">
+              Rico y suave pan con una costra de azúcar sabor vainilla
+            </p>
+            <p class="price">$15.50 c/u</p>
+          </div>
+          <div class="product-container">
+            <img src="images/Dona chocolate.png" alt="Dona de chocolate" />
+            <h3>Dona de chocolate</h3>
+            <p class="description">
+              Dona frita con cobertura de chocolate con leche
+            </p>
+            <p class="price">$20 c/u</p>
+          </div>
+          <div class="product-container">
+            <img src="images/Oreja tradicional.png" alt="Oreja tradicional" />
+            <h3>Oreja tradicional</h3>
+            <p class="description">
+              Tradicional oreja de hojaldre espolvoreada con azúcar
+            </p>
+            <p class="price">$18 c/u</p>
+          </div>
+          <div class="product-container">
+            <img src="images/Polvorones.png" alt="Galleta polvorón" />
+            <h3>"EL polvorón"</h3>
+            <p class="description">
+              Galleta tipo "polvorón" con la tradicional receta de la casa
+            </p>
+            <p class="price">$7 c/u</p>
+          </div>
+        </div>
+      </section>
+      <section id="pedido" class="form">
+        <h2>Comunicate para hacer tu pedido</h2>
+        <div class="form-registration">
+          <form action="/submit-contact" method="post">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="nombre" required />
+            <label for="phone-number">Número telefónico</label>
+            <input
+              type="tel"
+              id="phone-number"
+              name="numero-telefonico"
+              required
+            />
+            <button class="submit-button" type="submit">Enviar</button>
+            <p class="submit-condition">
+              Toda la comunicación es vía Whatsapp.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <section id="about" class="about">
+        <h2>Quienes somos</h2>
+        <p>
+          Somos una panaderia hogareña con el deseo de compartir delicias
+          tradicionales con nuestro alrededor, asi como también, promover la
+          búsqueda de compartir más momentos con la gente a nuestro alrededor.
+        </p>
+      </section>
+    </footer>
+  </body>
+</html>
