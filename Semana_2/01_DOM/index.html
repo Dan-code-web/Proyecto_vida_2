@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Web semana 2</title>
+  </head>
+  <body>
+    <header>
+      <h1>Bienvenido</h1>
+    </header>
+    <main>
+      <section id="catalogo">
+        <h2>Nuestro catálogo</h2>
+        <input
+          type="text"
+          id="busquedacatalogo"
+          placeholder="Buscar producto..."
+        />
+        <p id="busquedatexto"></p>
+        <p class="producto">Bolillo</p>
+        <p class="producto">Telera</p>
+        <p class="producto">Chapata</p>
+        <a id="consulta">Consultar documentación</a>
+        <button id="botoncambio" type="button">
+          Cambiar estado de producto
+        </button>
+      </section>
+      <section id="pedido">
+        <form action="" id="formulario">
+          <label for="name" id="labnombre" name="nombre">Nombre</label>
+          <input type="text" id="inpnombre" required />
+          <label for="number" id="labproducto" name="numproductos"
+            >Número de productos</label
+          >
+          <input type="number" id="inpproducto" required />
+          <button type="submit" id="botonregistro">Registrar pedido</button>
+        </form>
+        <p id="confirmacion"></p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+/* ===== ESTADOS DE PRODUCTOS ===== */
+.agotado {
+  color: gray;
+  text-decoration: line-through;
+}
+
+/* ===== CONFIRMACIÓN DE PEDIDOS ===== */
+
+#confirmacion {
+  white-space: pre-line;
+}
