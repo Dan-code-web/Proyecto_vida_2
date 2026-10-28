@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 /* ========== COMPONENTE PRINCIPAL CATALOGO (PADRE DE PRODUCTO) ========== ----------------------------------------------------------------- */
 function Catalogo() {
   /* ========== Funciones secundarias para busqueda */
@@ -13,6 +14,16 @@ function Catalogo() {
   }
 
   /* ========== Retorno general ========== */
+  const productos = [
+    { id: 1, nombre: "Concha", precio: 12.5 },
+    { id: 2, nombre: "Dona", precio: 18.0 },
+    { id: 3, nombre: "Oreja", precio: 15.5 },
+    { id: 4, nombre: "Polvorón", precio: 9.0 },
+  ];
+
+  const productosFiltrados = productos.filter((producto) =>
+    producto.nombre.toLowerCase().includes(busqueda.toLowerCase()),
+  );
 
   return (
     <section id="catalogo">
@@ -21,11 +32,19 @@ function Catalogo() {
       <button onClick={limpiarBusqueda}>Limpiar búsqueda</button>
       <p>{busqueda}</p>
       <div className="catalogo-acostado">
-        <Producto nombre="Concha" precio={12.5} />
-        <Producto nombre="Dona" precio={18.0} />
-        <Producto nombre="Oreja" precio={15.5} />
-        <Producto nombre="Polvorón" precio={9.0} />
+        {productosFiltrados.map((producto) => (
+          <Producto
+            key={producto.id}
+            nombre={producto.nombre}
+            precio={producto.precio}
+          />
+        ))}
       </div>
+      {productosFiltrados.length === 0 && (
+        <p>
+          <b>No se encontraron productos</b>
+        </p>
+      )}
     </section>
   );
 }
@@ -52,6 +71,10 @@ function Producto({ nombre, precio }) {
     }
   }
 
+  useEffect(() => {
+    document.title = `Cantidad seleccionada: ${cantidad}`;
+  }, [cantidad]);
+
   /* ========== Retorno general ========== */
   return (
     <section className="tarjeta">
@@ -62,6 +85,7 @@ function Producto({ nombre, precio }) {
         <p>{cantidad}</p>
         <button onClick={disminuirCantidad}>-</button>
       </div>
+      {cantidad > 0 && <p>Producto agregado al pedido</p>}
       <div>
         <button onClick={alternarFavorito}>
           {favorito ? "Quitar de favoritos" : "Agregar a favoritos"}
