@@ -25,6 +25,30 @@ function Catalogo() {
     producto.nombre.toLowerCase().includes(busqueda.toLowerCase()),
   );
 
+  const [productosApi, setProductosAPI] = useState([]);
+  const [cargando, setCargando] = useState(false);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    async function cargarProductos() {
+      setCargando(true);
+      try {
+        const respuesta = await fetch("https://dummyjson.com/products?limit=6");
+        if (!respuesta.ok) {
+          throw new Error(`Error de respuesta. ${respuesta.status}`);
+        }
+        const resultado = await respuesta.json();
+        setProductosAPI(resultado.products);
+        console.log(resultado.products);
+      } catch (error) {
+        setError(error.message);
+        console.error(error);
+      } finally {
+        setCargando(false);
+      }
+    }
+    cargarProductos();
+  }, []);
+
   return (
     <section id="catalogo">
       <h2>Nuestro catálogo</h2>
@@ -45,6 +69,18 @@ function Catalogo() {
           <b>No se encontraron productos</b>
         </p>
       )}
+      <h2>Productos de la API</h2>
+      {cargando === true && <p>Cargando productos...</p>}
+      {error !== null && <p>{error}</p>}
+      <div className="catalogo-acostado">
+        {productosApi.map((producto) => (
+          <Producto
+            key={producto.id}
+            nombre={producto.title}
+            precio={producto.price}
+          />
+        ))}
+      </div>
     </section>
   );
 }
