@@ -12,6 +12,16 @@ function Catalogo() {
   function limpiarBusqueda() {
     setBusqueda("");
   }
+  /* Funciones secundarias para busqueda en el catalogo de la APi */
+  const [busquedaApi, setBusquedaApi] = useState("");
+
+  function manejarBusquedaApi(evento) {
+    setBusquedaApi(evento.target.value);
+  }
+
+  function limpiarBusquedaApi() {
+    setBusquedaApi("");
+  }
 
   /* ========== Retorno general ========== */
   const productos = [
@@ -48,6 +58,9 @@ function Catalogo() {
     }
     cargarProductos();
   }, []);
+  const productosApiFiltrados = productosApi.filter((producto) =>
+    producto.title.toLowerCase().includes(busquedaApi.toLowerCase()),
+  );
 
   return (
     <section id="catalogo">
@@ -72,8 +85,11 @@ function Catalogo() {
       <h2>Productos de la API</h2>
       {cargando === true && <p>Cargando productos...</p>}
       {error !== null && <p>{error}</p>}
+      <input type="text" value={busquedaApi} onChange={manejarBusquedaApi} />
+      <button onClick={limpiarBusquedaApi}>Limpiar búsqueda</button>
+      <p>{busquedaApi}</p>
       <div className="catalogo-acostado">
-        {productosApi.map((producto) => (
+        {productosApiFiltrados.map((producto) => (
           <Producto
             key={producto.id}
             nombre={producto.title}
@@ -81,6 +97,11 @@ function Catalogo() {
           />
         ))}
       </div>
+      {productosApiFiltrados.length === 0 && (
+        <p>
+          <b>No se encontraron productos</b>
+        </p>
+      )}
     </section>
   );
 }
